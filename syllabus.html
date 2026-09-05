@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Syllabus — IP Coaching AI &amp; ML Bootcamp</title>
+  <link rel="preload" href="assets/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="The IP Coaching AI & ML syllabus — a guided path from math foundations to production-ready agentic AI. Everything you need to become job-ready." />
+
+  <style>
+    /* ============ SYLLABUS PAGE ============ */
+    .syl-hero{
+      position:relative; text-align:center; overflow:hidden;
+      padding:clamp(56px,9vh,110px) 16px clamp(40px,6vh,72px);
+    }
+    .syl-hero__inner{position:relative; z-index:1; max-width:820px; margin-inline:auto}
+    .syl-kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 14px; border-radius:999px; margin-bottom:18px;
+      background:#ffffff0d; border:1px solid var(--border);
+      color:#bcd3ff; font-size:.82rem; font-weight:600;
+    }
+    .syl-kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px #18b26b22}
+    .syl-hero h1{font-size:clamp(34px,6vw,60px); line-height:1.04; margin:0 0 14px}
+    .syl-hero p{color:var(--muted); font-size:clamp(16px,2vw,19px); max-width:56ch; margin:0 auto 26px}
+    .syl-hero .cta-row{margin-top:8px}
+
+    /* stat ribbon */
+    .syl-stats{
+      display:flex; flex-wrap:wrap; justify-content:center; gap:14px;
+      margin:34px auto 0; max-width:760px;
+    }
+    .syl-stat{
+      flex:1 1 150px; min-width:140px;
+      background:linear-gradient(180deg,#ffffff0a,#ffffff03);
+      border:1px solid var(--border); border-radius:14px; padding:16px 14px;
+    }
+    .syl-stat b{display:block; font-size:1.7rem; line-height:1;
+      background:linear-gradient(90deg,var(--accent-300),var(--accent-500));
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .syl-stat span{display:block; margin-top:6px; color:var(--muted); font-size:.82rem}
+
+    /* soft orbs reused subtly */
+    .syl-orb{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; z-index:0}
+    .syl-orb--a{width:360px;height:360px;background:radial-gradient(circle at 30% 30%,var(--accent-500),transparent 70%);top:-80px;left:-60px}
+    .syl-orb--b{width:300px;height:300px;background:radial-gradient(circle at 30% 30%,#2be4a2,transparent 70%);top:20px;right:-40px}
+
+    /* ============ THE PATH (spine) ============ */
+    .path{position:relative; width:min(980px,92vw); margin:8px auto 0; padding:20px 0 10px}
+    .path__lead{text-align:center; max-width:620px; margin:0 auto 40px}
+    .path__lead h2{font-size:clamp(24px,3.4vw,34px); margin:0 0 8px}
+    .path__lead p{color:var(--muted); margin:0}
+
+    .spine{position:relative}
+    /* the vertical connective line */
+    .spine::before{
+      content:""; position:absolute; top:8px; bottom:8px; left:34px; width:2px;
+      background:linear-gradient(180deg,var(--accent-300),var(--accent-500) 45%,var(--accent-600) 75%,transparent);
+      opacity:.5;
+    }
+    @media (max-width:760px){ .spine::before{left:22px} }
+
+    .stage{position:relative; padding:0 0 30px 78px; margin:0}
+    @media (max-width:760px){ .stage{padding-left:54px} }
+
+    /* the node marker */
+    .stage__node{
+      position:absolute; left:16px; top:2px;
+      width:38px; height:38px; border-radius:12px; display:grid; place-items:center;
+      font-weight:800; font-size:.95rem; color:#03102e;
+      background:linear-gradient(135deg,var(--accent-300),var(--accent-500));
+      box-shadow:0 8px 24px #5b34ff55, inset 0 0 0 2px #ffffffcc;
+      z-index:2;
+    }
+    @media (max-width:760px){ .stage__node{left:4px; width:34px;height:34px;border-radius:10px} }
+
+    .stage__head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-bottom:4px}
+    .stage__phase{font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:#8fb2ff; font-weight:700}
+    .stage__title{font-size:1.5rem; margin:0; line-height:1.2}
+    .stage__weeks{margin-left:auto; font-size:.8rem; color:var(--muted); white-space:nowrap;
+      background:#ffffff0d; border:1px solid var(--border); padding:4px 10px; border-radius:999px}
+    .stage__desc{color:var(--muted); margin:2px 0 16px; max-width:62ch}
+
+    /* module cards inside a stage */
+    .mods{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+    .mod{
+      position:relative; background:linear-gradient(180deg,#ffffff09,#ffffff03);
+      border:1px solid var(--border); border-radius:14px; padding:16px 16px 15px;
+      transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    }
+    .mod:hover{border-color:#3b4a7a; transform:translateY(-3px);
+      box-shadow:0 14px 30px rgba(0,0,0,.35)}
+    .mod__ico{
+      width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:11px;
+      background:#0b0f1c;border:1px solid var(--border);
+    }
+    .mod__ico svg{width:19px;height:19px;stroke:var(--accent-300);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .mod h4{margin:0 0 7px; font-size:1.02rem}
+    .mod ul{margin:0; padding:0; list-style:none; display:grid; gap:6px}
+    .mod li{position:relative; padding-left:17px; color:#c7cee0; font-size:.9rem; line-height:1.45}
+    .mod li::before{content:""; position:absolute; left:2px; top:.55em; width:5px;height:5px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent-300),var(--accent-500))}
+    .mod__tag{position:absolute; top:14px; right:14px; font-size:.66rem; font-weight:700;
+      color:#a8ffcf; background:#0f241b; border:1px solid #1d4d36; padding:3px 8px; border-radius:999px}
+
+    /* capstone / outcome band */
+    .capstone{
+      width:min(980px,92vw); margin:20px auto 0; padding:26px clamp(18px,3vw,34px);
+      border-radius:20px; position:relative; overflow:hidden;
+      background:linear-gradient(120deg,#141a34,#0f1428);
+      border:1px solid var(--border);
+    }
+    .capstone::after{content:""; position:absolute; inset:0;
+      background:radial-gradient(600px 200px at 100% 0%, #5b34ff33, transparent 60%); pointer-events:none}
+    .capstone__grid{position:relative; display:grid; gap:22px; grid-template-columns:1.2fr 1fr; align-items:center}
+    @media (max-width:820px){ .capstone__grid{grid-template-columns:1fr} }
+    .capstone h3{margin:0 0 8px; font-size:1.5rem}
+    .capstone p{color:var(--muted); margin:0 0 14px}
+    .capstone__list{display:grid; gap:10px; margin:0; padding:0; list-style:none}
+    .capstone__list li{display:flex; gap:10px; align-items:flex-start; color:#dbe3ff; font-size:.94rem}
+    .capstone__list svg{flex:0 0 auto; width:20px;height:20px;stroke:var(--success);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+
+    .tools-wrap{display:flex; flex-wrap:wrap; gap:9px}
+    .tool{font-size:.82rem; color:#dfe6ff; background:#ffffff0d; border:1px solid var(--border);
+      padding:7px 12px; border-radius:10px}
+
+    /* final CTA */
+    .syl-final{width:min(980px,92vw); margin:44px auto 8px; text-align:center;
+      background:linear-gradient(90deg,var(--accent-500),var(--accent-600)); color:#fff;
+      border-radius:20px; padding:34px 20px}
+    .syl-final h3{margin:0 0 8px; font-size:clamp(22px,3vw,30px)}
+    .syl-final p{margin:0 auto 18px; max-width:52ch; opacity:.92}
+    .syl-final .btn-ghost{border-color:#ffffff55}
+
+    @media (prefers-reduced-motion:reduce){ .mod{transition:none} }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="36" height="36" />
+      <span>IP Coaching</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="syllabus.html" aria-current="page">Syllabus</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="syl-hero">
+      <span class="syl-orb syl-orb--a"></span>
+      <span class="syl-orb syl-orb--b"></span>
+      <div class="syl-hero__inner">
+        <span class="syl-kicker"><span class="dot"></span> Job-ready in 24 weeks</span>
+        <h1>The path from <span class="accent">math to production AI</span></h1>
+        <p>A single guided track that takes you from the fundamentals through machine learning, statistics, and modern AI — ending with agentic workflows you can ship. No gaps, no guesswork.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="register.html">Enroll now</a>
+          <a class="btn btn-ghost" href="testimonials.html">See graduate outcomes</a>
+        </div>
+
+        <div class="syl-stats">
+          <div class="syl-stat"><b>5</b><span>Learning stages</span></div>
+          <div class="syl-stat"><b>24</b><span>Weeks, part-time</span></div>
+          <div class="syl-stat"><b>8+</b><span>Portfolio projects</span></div>
+          <div class="syl-stat"><b>1:1</b><span>Mentorship &amp; reviews</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PATH -->
+    <section class="path">
+      <div class="path__lead">
+        <h2>How the curriculum builds</h2>
+        <p>Each stage assumes the one before it. Follow the spine top to bottom and you never hit a concept you weren't prepared for.</p>
+      </div>
+
+      <div class="spine">
+
+        <!-- STAGE 1 -->
+        <article class="stage">
+          <div class="stage__node">1</div>
+          <div class="stage__head">
+            <span class="stage__phase">Foundations</span>
+            <h3 class="stage__title">Mathematics for AI &amp; ML</h3>
+            <span class="stage__weeks">Weeks 1–4</span>
+          </div>
+          <p class="stage__desc">The language every model is written in. We build just enough rigor to make everything downstream feel obvious instead of magical.</p>
+          <div class="mods">
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M4 4h16M4 4v16M4 20h16"/><path d="M8 14l3-4 3 3 3-5"/></svg></div>
+              <h4>Linear Algebra</h4>
+              <ul>
+                <li>Vectors, matrices &amp; operations</li>
+                <li>Eigenvalues &amp; decompositions</li>
+                <li>Why it powers embeddings</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M6 15c3-6 6-6 9-9"/></svg></div>
+              <h4>Calculus &amp; Optimization</h4>
+              <ul>
+                <li>Derivatives &amp; gradients</li>
+                <li>Gradient descent, intuitively</li>
+                <li>Loss surfaces &amp; convexity</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              <h4>Probability Basics</h4>
+              <ul>
+                <li>Distributions &amp; expectation</li>
+                <li>Bayes' theorem in practice</li>
+                <li>Sampling &amp; randomness</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STAGE 2 -->
+        <article class="stage">
+          <div class="stage__node">2</div>
+          <div class="stage__head">
+            <span class="stage__phase">Reasoning with data</span>
+            <h3 class="stage__title">Statistics &amp; Data Analysis</h3>
+            <span class="stage__weeks">Weeks 5–8</span>
+          </div>
+          <p class="stage__desc">Before you model anything, you learn to interrogate data honestly — the difference between a real signal and a lucky one.</p>
+          <div class="mods">
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16"/><rect x="7" y="11" width="3" height="8"/><rect x="12" y="7" width="3" height="12"/><rect x="17" y="14" width="3" height="5"/></svg></div>
+              <h4>Descriptive &amp; Inferential</h4>
+              <ul>
+                <li>Central tendency &amp; spread</li>
+                <li>Confidence intervals</li>
+                <li>Hypothesis testing</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2"/><circle cx="16" cy="15" r="2"/><path d="M4 20c1-4 4-6 8-7s6-3 8-6"/></svg></div>
+              <h4>Regression &amp; Correlation</h4>
+              <ul>
+                <li>Linear &amp; logistic models</li>
+                <li>Correlation vs causation</li>
+                <li>Reading model coefficients</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+              <h4>Experiment Design</h4>
+              <ul>
+                <li>A/B tests done right</li>
+                <li>p-values &amp; significance</li>
+                <li>Avoiding common traps</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STAGE 3 -->
+        <article class="stage">
+          <div class="stage__node">3</div>
+          <div class="stage__head">
+            <span class="stage__phase">Core craft</span>
+            <h3 class="stage__title">Machine Learning</h3>
+            <span class="stage__weeks">Weeks 9–15</span>
+          </div>
+          <p class="stage__desc">The heart of the program. You'll build, train, and evaluate models end-to-end — and learn why they behave the way they do.</p>
+          <div class="mods">
+            <div class="mod">
+              <span class="mod__tag">Hands-on</span>
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg></div>
+              <h4>Supervised Learning</h4>
+              <ul>
+                <li>Trees, forests &amp; boosting</li>
+                <li>SVMs &amp; k-NN</li>
+                <li>Feature engineering</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2.5"/><circle cx="16" cy="7" r="2.5"/><circle cx="12" cy="16" r="2.5"/></svg></div>
+              <h4>Unsupervised Learning</h4>
+              <ul>
+                <li>Clustering &amp; segmentation</li>
+                <li>Dimensionality reduction</li>
+                <li>Anomaly detection</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <span class="mod__tag">Hands-on</span>
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 10v4"/></svg></div>
+              <h4>Deep Learning</h4>
+              <ul>
+                <li>Neural nets from scratch</li>
+                <li>CNNs &amp; RNNs</li>
+                <li>PyTorch &amp; TensorFlow</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M12 2v6M4.9 7l4.2 2.4M19.1 7l-4.2 2.4"/><circle cx="12" cy="15" r="6"/></svg></div>
+              <h4>Model Evaluation</h4>
+              <ul>
+                <li>Bias–variance tradeoff</li>
+                <li>Cross-validation</li>
+                <li>Precision, recall, ROC</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STAGE 4 -->
+        <article class="stage">
+          <div class="stage__node">4</div>
+          <div class="stage__head">
+            <span class="stage__phase">The frontier</span>
+            <h3 class="stage__title">Artificial Intelligence</h3>
+            <span class="stage__weeks">Weeks 16–21</span>
+          </div>
+          <p class="stage__desc">Modern AI in three layers: the concepts behind large models, the tools that put them to work, and the agentic systems that chain them together.</p>
+          <div class="mods">
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+              <h4>AI Concepts</h4>
+              <ul>
+                <li>Transformers &amp; attention</li>
+                <li>How LLMs are trained</li>
+                <li>Embeddings &amp; vector search</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <span class="mod__tag">Hands-on</span>
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M14 3l-1 4 4-1M4 20l6-6M13.5 6.5l4 4L9 19H5v-4z"/></svg></div>
+              <h4>AI Tools &amp; Prompting</h4>
+              <ul>
+                <li>Prompt engineering that works</li>
+                <li>APIs: OpenAI, Claude, open models</li>
+                <li>RAG &amp; fine-tuning basics</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <span class="mod__tag">Capstone-ready</span>
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg></div>
+              <h4>Agentic AI Workflows</h4>
+              <ul>
+                <li>Tool use &amp; function calling</li>
+                <li>Multi-step agents &amp; memory</li>
+                <li>Orchestration frameworks</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- STAGE 5 -->
+        <article class="stage">
+          <div class="stage__node">5</div>
+          <div class="stage__head">
+            <span class="stage__phase">Ship &amp; get hired</span>
+            <h3 class="stage__title">MLOps &amp; Career Launch</h3>
+            <span class="stage__weeks">Weeks 22–24</span>
+          </div>
+          <p class="stage__desc">Turning working models into deployed products, plus the interview prep and portfolio polish that gets you the offer.</p>
+          <div class="mods">
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M4 15a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 18 15z"/><path d="M12 12v6M9 15l3-3 3 3"/></svg></div>
+              <h4>Deployment &amp; MLOps</h4>
+              <ul>
+                <li>Serving models as APIs</li>
+                <li>Docker &amp; cloud basics</li>
+                <li>Monitoring in production</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg></div>
+              <h4>Portfolio Build-out</h4>
+              <ul>
+                <li>Ship your capstone live</li>
+                <li>Case-study write-ups</li>
+                <li>GitHub &amp; demo polish</li>
+              </ul>
+            </div>
+            <div class="mod">
+              <div class="mod__ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5-2.9 1-5.5-4-3.9 5.5-.8z"/></svg></div>
+              <h4>Interview Prep</h4>
+              <ul>
+                <li>ML system-design drills</li>
+                <li>Mock technical interviews</li>
+                <li>Resume &amp; referral support</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CAPSTONE / OUTCOMES -->
+    <section class="capstone">
+      <div class="capstone__grid">
+        <div>
+          <h3>You graduate with proof, not just knowledge</h3>
+          <p>By the final week you'll have shipped real work and can walk into interviews with something to show.</p>
+          <ul class="capstone__list">
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> A deployed, end-to-end AI application</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> A portfolio of 8+ documented projects</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> A working agentic workflow you built yourself</li>
+            <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Interview readiness for AI/ML roles</li>
+          </ul>
+        </div>
+        <div>
+          <p style="color:var(--muted);margin:0 0 12px;font-size:.9rem">Tools you'll be fluent in:</p>
+          <div class="tools-wrap">
+            <span class="tool">Python</span>
+            <span class="tool">NumPy</span>
+            <span class="tool">pandas</span>
+            <span class="tool">scikit-learn</span>
+            <span class="tool">PyTorch</span>
+            <span class="tool">TensorFlow</span>
+            <span class="tool">Hugging Face</span>
+            <span class="tool">LangChain</span>
+            <span class="tool">OpenAI API</span>
+            <span class="tool">Claude API</span>
+            <span class="tool">Docker</span>
+            <span class="tool">Git</span>
+            <span class="tool">SQL</span>
+            <span class="tool">Vector DBs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="syl-final">
+      <h3>Ready to start the path?</h3>
+      <p>Seats are limited each cohort so mentors can give real feedback. Reserve yours before enrollment closes.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn-ghost" href="register.html">Register now</a>
+        <a class="btn btn-ghost" href="testimonials.html">Read student stories</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="28" height="28" />
+      <span>IP Coaching</span>
+    </a>
+    <p class="micro" style="margin:0">© 2026 IP Coaching · Built for future AI engineers</p>
+  </footer>
+</body>
+</html>

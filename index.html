@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IP Coaching — AI Engineering Bootcamp</title>
+  <link rel="preload" href="assets/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="IP Coaching — Practical AI/ML engineering bootcamp. Learn by building with modern tools." />
+
+  <!-- Inline styles for the new Before & After section (dark theme, bold colors) -->
+  <style>
+    .ba {
+      --accent: #7c6cff;
+      --accent2: #ff4d9a;
+      --accent3: #3ddcff;
+      --success: #5CFF7E;
+      --glass: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.14);
+      --card-w: 320px;
+      --gap: 20px;
+      background: radial-gradient(1200px 600px at 10% -10%, #1b1d47 0%, transparent 50%), 
+                  linear-gradient(180deg, #0b0e1a 0%, #0e1330 100%);
+      color: #e8eaff;
+      padding: 68px 0;
+    }
+    .ba .container { padding-left: 24px; padding-right: 24px; }
+    .ba__eyebrow { font-size:.8rem; letter-spacing:.12em; color: var(--accent3); text-transform: uppercase; font-weight: 800; }
+    .ba__title { margin:6px 0 8px; font-size: clamp(1.6rem, 3vw, 2.15rem); color:#fff; }
+    .ba__sub { color: #cbd0ff; margin: 0 0 22px; }
+
+    .ba__viewport { position: relative; }
+    .ba__track {
+      display:flex; gap: var(--gap);
+      overflow-x:auto; padding:12px 6px 22px;
+      scroll-snap-type:x mandatory; -webkit-overflow-scrolling: touch;
+    }
+    .ba__track::-webkit-scrollbar { height: 10px; }
+    .ba__track::-webkit-scrollbar-thumb { background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 10px; }
+    .ba__track:focus { outline: 2px solid var(--accent3); outline-offset: 3px; }
+
+    .ba__card {
+      flex: 0 0 var(--card-w);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 18px;
+      box-shadow: 0 12px 36px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,0.03);
+      scroll-snap-align: start;
+      display: grid; gap: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    .ba__top { display:flex; align-items:center; gap:12px; }
+    .ba__avatar {
+      width:40px; height:40px; border-radius:50%;
+      background: conic-gradient(from 220deg, var(--accent), var(--accent2), var(--accent3), var(--accent));
+      display:grid; place-items:center; color:#0b0e1a; font-weight:900;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.85);
+    }
+    .ba__name { font-weight: 800; color:#fff; }
+    .ba__meta { font-size:.85rem; color:#aeb6ff; }
+
+    .ba__pair { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+    .ba__badge {
+      display:inline-block; font-size:.72rem; padding:4px 10px; border-radius:999px; font-weight: 800;
+    }
+    .ba__badge--before { background: rgba(255,77,154,.18); color:#ff7eb6; border:1px solid rgba(255,77,154,.35); }
+    .ba__badge--after  { background: rgba(92,255,126,.16); color: var(--success); border:1px solid rgba(92,255,126,.35); }
+
+    .ba__box {
+      border:1px solid var(--border);
+      border-radius:12px; padding:12px;
+      background: var(--glass);
+    }
+    .ba__box h4 { margin:.1rem 0 .25rem; font-size:.96rem; color:#fff; }
+    .ba__box p { margin:0; font-size:.9rem; color:#dfe3ff; }
+
+    .ba__salary { font-weight:900; color: var(--success); }
+    .ba__role { color:#ffffff; }
+
+    .ba__nav {
+      position:absolute; top:50%; translate: 0 -50%;
+      width:42px; height:42px; border:none; border-radius:50%;
+      background: rgba(255,255,255,0.12);
+      color:#fff; box-shadow: 0 8px 28px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,0.12);
+      display:grid; place-items:center; cursor:pointer; transition:.2s transform, .2s background;
+      backdrop-filter: blur(8px);
+    }
+    .ba__nav:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); }
+    .ba__nav--prev { left:8px; }
+    .ba__nav--next { right:8px; }
+    .ba__nav svg { width:18px; height:18px; }
+
+    .ba__disclaimer { margin: 16px 0 0; font-size:.8rem; color:#9aa2ff; }
+
+    @media (min-width: 960px) {
+      .ba { padding: 80px 0; }
+      .ba__nav--prev { left:14px; } .ba__nav--next { right:14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="36" height="36" />
+      <span>IP Coaching</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="syllabus.html">Syllabus</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="register.html">Register</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO (centered text, bg art on right) -->
+    <section class="hero">
+      <div class="hero__content">
+        <h1>Secure Your Future in the <span class="accent">AI Boom</span></h1>
+        <p class="lead">Hands-on projects, real mentorship, and production-ready skills. Build models, ship apps, and graduate with a job-ready portfolio.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="register.html">Register now</a>
+          <a class="btn btn-ghost" href="insights.html">See AI growth & news</a>
+          <a class="btn btn-ghost" href="about.html">About Us</a>
+        </div>
+        <ul class="home-points" aria-label="Who the course is for">
+          <li>Career changers</li>
+          <li>Upskilling engineers</li>
+          <li>College graduates</li>
+        </ul>
+      </div>
+
+      <!-- Decorative background (anchored right) -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="orb orb--lg"></div>
+        <div class="orb orb--sm"></div>
+        <svg class="grid" viewBox="0 0 400 400" preserveAspectRatio="none" role="img" aria-label="decorative grid">
+          <defs>
+            <pattern id="dot" width="20" height="20" patternUnits="userSpaceOnUse">
+              <circle cx="10" cy="10" r="1.2" fill="#8a5cff" opacity="0.35" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#dot)" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- (Removed: "Why IP Coaching" section) -->
+
+    <!-- What you'll master (centered) -->
+    <section class="features container section--center">
+      <h2>What you’ll master</h2>
+      <div class="cards">
+        <article class="card"><h3>Foundations → Production</h3><p>From Python & data pipelines to model training, evaluation, and deployment.</p></article>
+        <article class="card"><h3>GenAI & LLM Ops</h3><p>Prompting, RAG, fine-tuning, monitoring, evals, and cost/perf tradeoffs.</p></article>
+        <article class="card"><h3>Career Outcomes</h3><p>Portfolio projects, mock interviews, and practical guidance to land AI roles.</p></article>
+      </div>
+    </section>
+
+    <!-- BEFORE & AFTER (dark theme, bold colors) -->
+    <section class="ba">
+      <div class="container">
+        <div class="ba__head">
+          <div class="ba__eyebrow">Career Wins</div>
+          <h2 class="ba__title">Before → After: Real Student Transformations</h2>
+          <p class="ba__sub">Graduates who completed our AI course and stepped into high-impact roles across the globe.</p>
+        </div>
+
+        <div class="ba__viewport" aria-label="Before and after reviews">
+          <ul class="ba__track" id="ba-track" role="list" tabindex="0" aria-describedby="ba-note">
+            <!-- Card 1 -->
+            <li class="ba__card" aria-label="Review 1">
+              <div class="ba__top">
+                <div class="ba__avatar">AM</div>
+                <div>
+                  <div class="ba__name">Alex M.</div>
+                  <div class="ba__meta">Austin, TX (USA) · Now at Microsoft</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Retail associate</h4>
+                  <p>Wanted to break into tech with no prior ML experience.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">AI Engineer</h4>
+                  <p><span class="ba__salary">$180,000</span>/yr · Microsoft</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 2 -->
+            <li class="ba__card" aria-label="Review 2">
+              <div class="ba__top">
+                <div class="ba__avatar">SJ</div>
+                <div>
+                  <div class="ba__name">Sara J.</div>
+                  <div class="ba__meta">Toronto (Canada) · Now at NVIDIA</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Graphic designer</h4>
+                  <p>No coding background, strong product instincts.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">Machine Learning Specialist</h4>
+                  <p><span class="ba__salary">$220,000</span>/yr · NVIDIA</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 3 -->
+            <li class="ba__card" aria-label="Review 3">
+              <div class="ba__top">
+                <div class="ba__avatar">KD</div>
+                <div>
+                  <div class="ba__name">Kris D.</div>
+                  <div class="ba__meta">Seattle, WA (USA) · Now at Amazon</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>College graduate</h4>
+                  <p>Exploring online courses; needed a clear ML roadmap.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">Data Scientist</h4>
+                  <p><span class="ba__salary">$165,000</span>/yr · Amazon</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 4 -->
+            <li class="ba__card" aria-label="Review 4">
+              <div class="ba__top">
+                <div class="ba__avatar">NL</div>
+                <div>
+                  <div class="ba__name">Noah L.</div>
+                  <div class="ba__meta">Dublin (Ireland) · Now at Meta</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Customer support agent</h4>
+                  <p>Strong communication skills, zero tech background.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">AI Product Manager</h4>
+                  <p><span class="ba__salary">$320,000</span>/yr · Meta</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 5 -->
+            <li class="ba__card" aria-label="Review 5">
+              <div class="ba__top">
+                <div class="ba__avatar">YP</div>
+                <div>
+                  <div class="ba__name">Yara P.</div>
+                  <div class="ba__meta">Miami, FL (USA) · Now at Adobe</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Operations analyst</h4>
+                  <p>Spreadsheet automations; wanted end-to-end ML systems.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">Machine Learning Engineer</h4>
+                  <p><span class="ba__salary">$205,000</span>/yr · Adobe</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 6 -->
+            <li class="ba__card" aria-label="Review 6">
+              <div class="ba__top">
+                <div class="ba__avatar">TG</div>
+                <div>
+                  <div class="ba__name">Tariq G.</div>
+                  <div class="ba__meta">London (UK) · Now at Google (Alphabet)</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>QA tester</h4>
+                  <p>Manual testing; minimal Python.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">Generative AI Engineer</h4>
+                  <p><span class="ba__salary">$260,000</span>/yr · Google</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 7 -->
+            <li class="ba__card" aria-label="Review 7">
+              <div class="ba__top">
+                <div class="ba__avatar">PR</div>
+                <div>
+                  <div class="ba__name">Priya R.</div>
+                  <div class="ba__meta">San Jose, CA (USA) · Now at Salesforce</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Business analyst</h4>
+                  <p>SQL dashboards; wanted LLM operations.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">LLM Ops Engineer</h4>
+                  <p><span class="ba__salary">$240,000</span>/yr · Salesforce</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 8 -->
+            <li class="ba__card" aria-label="Review 8">
+              <div class="ba__top">
+                <div class="ba__avatar">MS</div>
+                <div>
+                  <div class="ba__name">Mateo S.</div>
+                  <div class="ba__meta">Madrid (Spain) · Now at Shopify</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Frontend developer</h4>
+                  <p>React apps; curious about applied AI.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">AI Product Engineer</h4>
+                  <p><span class="ba__salary">$195,000</span>/yr · Shopify</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 9 -->
+            <li class="ba__card" aria-label="Review 9">
+              <div class="ba__top">
+                <div class="ba__avatar">AK</div>
+                <div>
+                  <div class="ba__name">Aisha K.</div>
+                  <div class="ba__meta">New York, NY (USA) · Now at Oracle</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Marketing associate</h4>
+                  <p>Content & campaigns; pivoted to analytics.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">Data Analyst (AI)</h4>
+                  <p><span class="ba__salary">$170,000</span>/yr · Oracle</p>
+                </div>
+              </div>
+            </li>
+
+            <!-- Card 10 -->
+            <li class="ba__card" aria-label="Review 10">
+              <div class="ba__top">
+                <div class="ba__avatar">KH</div>
+                <div>
+                  <div class="ba__name">Kenji H.</div>
+                  <div class="ba__meta">Tokyo (Japan) · Now at Palantir</div>
+                </div>
+              </div>
+              <div class="ba__pair">
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--before">Before</span>
+                  <h4>Backend developer</h4>
+                  <p>Strong APIs; wanted probabilistic modeling.</p>
+                </div>
+                <div class="ba__box">
+                  <span class="ba__badge ba__badge--after">After</span>
+                  <h4 class="ba__role">Applied Scientist</h4>
+                  <p><span class="ba__salary">$300,000</span>/yr · Palantir</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Nav buttons -->
+          <button class="ba__nav ba__nav--prev" type="button" aria-label="Scroll left" aria-controls="ba-track">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="ba__nav ba__nav--next" type="button" aria-label="Scroll right" aria-controls="ba-track">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+
+        <p id="ba-note" class="ba__disclaimer">
+          Individual outcomes vary. Company names are <strong>used for illustrative purposes only</strong> and do not imply <strong>affiliation or endorsement</strong>.
+        </p>
+      </div>
+    </section>
+    <!-- /BEFORE & AFTER -->
+
+    <!-- Upcoming cohort band -->
+    <section class="band band--cohort" aria-label="Upcoming cohort">
+      <div class="band__inner">
+        <div>
+          <div class="eyebrow">Upcoming Live Webinar — Fall Semester</div>
+          <h3 class="band__title">Starts September 27, 2025</h3>
+          <p class="band__sub">Live online · Part-time · Global</p>
+        </div>
+        <div class="band__right">
+          <span class="pill pill--warning" aria-live="polite">Limited seats</span>
+          <a class="btn btn-primary" href="register.html">Reserve your seat</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA band -->
+    <section class="band band--final">
+      <div class="band__inner">
+        <div>
+          <h3 class="band__title">Register for the next bootcamp</h3>
+          <p class="band__sub">Re-enlistment reassurance: revisit a future cohort if you need a refresh.</p>
+        </div>
+        <a class="btn btn-primary" href="register.html">Register now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> IP Coaching · All rights reserved</p>
+  </footer>
+
+<a href="https://de1x92-y3.myshopify.com/cart/49141933998357:1?channel=buy_button" class="floating-preorder-btn" target="_blank" rel="noopener noreferrer">
+  PRE-ORDER NOW – 25% OFF
+</a>
+
+  <style>
+    .floating-preorder-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #7c6cff;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      text-decoration: none;
+      z-index: 1000;
+      transition: background 0.2s ease;
+    }
+    .floating-preorder-btn:hover {
+      background: #684bff;
+    }
+
+    @media (max-width: 480px) {
+      .floating-preorder-btn {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+
+
+  <script src="assets/home.js" defer></script>
+  <script src="assets/app.js" defer></script>
+
+  <!-- Minimal JS for carousel buttons + drag-to-scroll (works alongside home.js) -->
+  <script>
+    (function(){
+      const track = document.getElementById('ba-track');
+      const prev = document.querySelector('.ba__nav--prev');
+      const next = document.querySelector('.ba__nav--next');
+      if (!track || !prev || !next) return;
+
+      const step = () => Math.min(track.clientWidth * 0.9, 520);
+      const scrollByAmt = (dx) => track.scrollBy({ left: dx, behavior: 'smooth' });
+
+      prev.addEventListener('click', () => scrollByAmt(-step()));
+      next.addEventListener('click', () => scrollByAmt(step()));
+
+      // Drag to scroll (desktop)
+      let down = false, startX = 0, startLeft = 0;
+      track.addEventListener('mousedown', (e) => { down = true; startX = e.pageX; startLeft = track.scrollLeft; track.style.cursor='grabbing'; });
+      window.addEventListener('mouseup', () => { down = false; track.style.cursor='auto'; });
+      track.addEventListener('mouseleave', () => { down = false; track.style.cursor='auto'; });
+      track.addEventListener('mousemove', (e) => {
+        if (!down) return;
+        e.preventDefault();
+        const dx = e.pageX - startX;
+        track.scrollLeft = startLeft - dx * 1.5;
+      });
+
+      // Keyboard support
+      track.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); scrollByAmt(step()); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollByAmt(-step()); }
+      });
+    })();
+  </script>
+</body>
+</html>

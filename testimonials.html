@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Testimonials — IP Coaching</title>
+  <link rel="preload" href="assets/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="Real transformations from IP Coaching graduates — where they started, what they built, and where they landed." />
+
+  <style>
+    /* ============ TESTIMONIALS PAGE ============ */
+    .tst-hero{position:relative; text-align:center; overflow:hidden;
+      padding:clamp(52px,8vh,96px) 16px clamp(26px,4vh,44px)}
+    .tst-hero__inner{position:relative; z-index:1; max-width:760px; margin-inline:auto}
+    .tst-orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45;z-index:0}
+    .tst-orb--a{width:340px;height:340px;background:radial-gradient(circle at 30% 30%,var(--accent-500),transparent 70%);top:-70px;right:-40px}
+    .tst-orb--b{width:280px;height:280px;background:radial-gradient(circle at 30% 30%,#2be4a2,transparent 70%);bottom:-60px;left:-40px}
+    .tst-hero h1{font-size:clamp(32px,5.5vw,56px); line-height:1.05; margin:0 0 14px}
+    .tst-hero p{color:var(--muted); font-size:clamp(16px,2vw,18px); max-width:54ch; margin:0 auto}
+
+    /* aggregate proof numbers */
+    .proof{display:flex; flex-wrap:wrap; justify-content:center; gap:0; margin:30px auto 0; max-width:640px;
+      border:1px solid var(--border); border-radius:16px; overflow:hidden;
+      background:linear-gradient(180deg,#ffffff08,#ffffff03)}
+    .proof div{flex:1 1 150px; padding:18px 14px; text-align:center; border-right:1px solid var(--border)}
+    .proof div:last-child{border-right:none}
+    .proof b{display:block; font-size:1.6rem; line-height:1;
+      background:linear-gradient(90deg,var(--accent-300),var(--accent-500));
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .proof span{display:block; margin-top:6px; color:var(--muted); font-size:.8rem}
+    @media (max-width:520px){ .proof div{border-right:none;border-bottom:1px solid var(--border)}
+      .proof div:last-child{border-bottom:none} }
+
+    /* filter bar */
+    .filters{display:flex; flex-wrap:wrap; justify-content:center; gap:9px;
+      width:min(1100px,92vw); margin:38px auto 24px}
+    .filter{cursor:pointer; font:inherit; font-size:.88rem; font-weight:600; color:#c7cee0;
+      background:#ffffff0d; border:1px solid var(--border); padding:9px 16px; border-radius:999px;
+      transition:.16s background,.16s color,.16s border-color}
+    .filter:hover{background:#ffffff17}
+    .filter[aria-pressed="true"]{
+      background:linear-gradient(90deg,var(--accent-500),var(--accent-600)); color:#fff; border-color:transparent}
+
+    /* the wall — CSS columns masonry */
+    .wall{width:min(1100px,92vw); margin:0 auto; columns:3 300px; column-gap:18px}
+    @media (max-width:900px){ .wall{columns:2 300px} }
+    @media (max-width:600px){ .wall{columns:1} }
+
+    .tcard{
+      break-inside:avoid; margin:0 0 18px; display:inline-block; width:100%;
+      background:linear-gradient(180deg,#ffffff0a,#ffffff03);
+      border:1px solid var(--border); border-radius:16px; padding:18px;
+      box-shadow:0 10px 26px rgba(0,0,0,.28);
+      transition:opacity .25s ease, transform .25s ease;
+    }
+    .tcard.is-hidden{display:none}
+    .tcard__top{display:flex; align-items:center; gap:12px; margin-bottom:13px}
+    .tcard__av{width:44px;height:44px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+      font-weight:800;font-size:1rem;color:#04122e;
+      background:conic-gradient(from 210deg,var(--accent-300),var(--accent-500),var(--accent-600),var(--accent-300));
+      box-shadow:inset 0 0 0 2px #ffffffdd}
+    .tcard__who{min-width:0}
+    .tcard__name{font-weight:700; line-height:1.2}
+    .tcard__meta{font-size:.8rem; color:var(--muted); margin-top:2px}
+
+    .tcard__move{display:flex; align-items:center; gap:8px; margin-bottom:13px; flex-wrap:wrap}
+    .tchip{font-size:.74rem; font-weight:700; padding:5px 10px; border-radius:999px; white-space:nowrap}
+    .tchip--from{color:#ffb4be; background:#2a0f16; border:1px solid #5a2730}
+    .tchip--to{color:#a8ffcf; background:#0f241b; border:1px solid #1d4d36}
+    .tarrow{opacity:.6}
+    .tarrow svg{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2}
+
+    .tcard__quote{color:#dbe1f2; font-size:.95rem; line-height:1.6; margin:0 0 14px}
+    .tcard__quote::before{content:"\201C"; color:var(--accent-400); font-size:1.4rem; line-height:0; margin-right:2px; vertical-align:-4px}
+
+    .tcard__foot{display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding-top:12px; border-top:1px solid var(--border)}
+    .tcard__role{font-size:.82rem; color:#c7cee0}
+    .tcard__role b{color:#fff; font-weight:700}
+    .tcard__salary{font-size:.82rem; font-weight:800; color:var(--success); white-space:nowrap}
+    .stars{color:var(--warning); font-size:.85rem; letter-spacing:1px; margin-top:2px}
+
+    .tcard__badge{position:relative; top:-2px; font-size:.68rem; font-weight:700; color:#bcd3ff;
+      background:#ffffff0d; border:1px solid var(--border); padding:3px 9px; border-radius:999px}
+
+    /* empty state */
+    .wall-empty{width:min(1100px,92vw); margin:0 auto; text-align:center; color:var(--muted);
+      padding:40px 0; display:none}
+
+    /* CTA */
+    .tst-cta{width:min(1100px,92vw); margin:36px auto 8px; text-align:center;
+      background:linear-gradient(90deg,var(--accent-500),var(--accent-600)); color:#fff;
+      border-radius:20px; padding:34px 20px}
+    .tst-cta h3{margin:0 0 8px; font-size:clamp(22px,3vw,30px)}
+    .tst-cta p{margin:0 auto 18px; max-width:52ch; opacity:.92}
+    .tst-cta .btn-ghost{border-color:#ffffff55}
+
+    .tst-note{width:min(1100px,92vw);margin:22px auto 0;color:#8b93a7;font-size:.78rem;text-align:center}
+
+    @media (prefers-reduced-motion:reduce){ .tcard{transition:none} }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="36" height="36" />
+      <span>IP Coaching</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="syllabus.html">Syllabus</a>
+      <a href="testimonials.html" aria-current="page">Testimonials</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="tst-hero">
+      <span class="tst-orb tst-orb--a"></span>
+      <span class="tst-orb tst-orb--b"></span>
+      <div class="tst-hero__inner">
+        <h1>Where our graduates <span class="accent">ended up</span></h1>
+        <p>Real people, real starting points. These are the transformations that happen when you follow the path and put in the work.</p>
+
+        <div class="proof">
+          <div><b>500+</b><span>Graduates hired</span></div>
+          <div><b>82%</b><span>Switched careers</span></div>
+          <div><b>4.9/5</b><span>Average rating</span></div>
+          <div><b>2.3×</b><span>Avg. salary lift</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTERS -->
+    <div class="filters" role="group" aria-label="Filter testimonials by background">
+      <button class="filter" data-filter="all" aria-pressed="true">All stories</button>
+      <button class="filter" data-filter="changer" aria-pressed="false">Career changers</button>
+      <button class="filter" data-filter="grad" aria-pressed="false">New graduates</button>
+      <button class="filter" data-filter="engineer" aria-pressed="false">Upskilling engineers</button>
+    </div>
+
+    <!-- WALL -->
+    <section class="wall" id="wall">
+
+      <!-- 1 -->
+      <article class="tcard" data-group="changer">
+        <div class="tcard__top">
+          <div class="tcard__av">PR</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Priya Ramesh</div>
+            <div class="tcard__meta">Bengaluru, India</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">Bank teller</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">ML Engineer</span>
+        </div>
+        <p class="tcard__quote">I hadn't touched math since school and was terrified of the deep learning stage. The spine layout meant every week actually made sense. Six months later I'm training models for a living.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>Fintech startup</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">+140% pay</div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="tcard" data-group="grad">
+        <div class="tcard__top">
+          <div class="tcard__av">DK</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Daniel Kim</div>
+            <div class="tcard__meta">Austin, TX</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">CS grad, no offers</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">AI Engineer</span>
+        </div>
+        <p class="tcard__quote">My degree taught theory but I couldn't build anything. The agentic AI capstone became the centerpiece of my portfolio — the interviewer spent the whole call asking about it.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>SaaS scale-up</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">$118k start</div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="tcard" data-group="engineer">
+        <div class="tcard__top">
+          <div class="tcard__av">AO</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Amara Okafor</div>
+            <div class="tcard__meta">London, UK</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">Backend dev</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">Senior ML Engineer</span>
+        </div>
+        <p class="tcard__quote">I could already code, so I skimmed the early stages and went deep on MLOps and deployment. Being able to actually ship a model to production is what earned me the promotion.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>Enterprise SaaS</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">+65% pay</div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="tcard" data-group="changer">
+        <div class="tcard__top">
+          <div class="tcard__av">MT</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Marco Torres</div>
+            <div class="tcard__meta">Madrid, Spain</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">High-school teacher</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">Data Scientist</span>
+        </div>
+        <p class="tcard__quote">Studying at night around a full-time job felt impossible until the mentorship kicked in. My mentor reviewed every project and pushed me until it was interview-ready. Worth every hour.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>E-commerce firm</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">+95% pay</div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="tcard" data-group="grad">
+        <div class="tcard__top">
+          <div class="tcard__av">SC</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Sophie Chen</div>
+            <div class="tcard__meta">Toronto, Canada</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">Biology graduate</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">NLP Engineer</span>
+        </div>
+        <p class="tcard__quote">Coming from a non-technical field, the statistics stage was the bridge I didn't know I needed. By the AI concepts weeks, transformers finally clicked instead of feeling like magic.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>Health-tech startup</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">$102k start</div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="tcard" data-group="engineer">
+        <div class="tcard__top">
+          <div class="tcard__av">RV</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Rahul Verma</div>
+            <div class="tcard__meta">Pune, India</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">QA engineer</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">MLOps Engineer</span>
+        </div>
+        <p class="tcard__quote">The agentic workflows module was unlike anything in other courses I'd tried. I built an internal automation agent at work using exactly what I learned, and it got noticed fast.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>Cloud services co.</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">+80% pay</div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="tcard" data-group="changer">
+        <div class="tcard__top">
+          <div class="tcard__av">JW</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Jessica Wolfe</div>
+            <div class="tcard__meta">Berlin, Germany</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">Marketing manager</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">AI Product Engineer</span>
+        </div>
+        <p class="tcard__quote">I was skeptical a career switch at 34 was realistic. The structured path removed the guesswork — I always knew exactly what to study next. That clarity is what kept me going.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>MarTech company</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">+110% pay</div>
+        </div>
+      </article>
+
+      <!-- 8 -->
+      <article class="tcard" data-group="grad">
+        <div class="tcard__top">
+          <div class="tcard__av">OA</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Omar Al-Sayed</div>
+            <div class="tcard__meta">Dubai, UAE</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">Fresh graduate</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">Computer Vision Eng.</span>
+        </div>
+        <p class="tcard__quote">The deep learning projects gave me real CNNs to show, not toy notebooks. I walked into my interview with a working demo on my phone and got the offer the same week.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>Robotics startup</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">$96k start</div>
+        </div>
+      </article>
+
+      <!-- 9 -->
+      <article class="tcard" data-group="engineer">
+        <div class="tcard__top">
+          <div class="tcard__av">LN</div>
+          <div class="tcard__who">
+            <div class="tcard__name">Lena Novak</div>
+            <div class="tcard__meta">Prague, Czechia</div>
+          </div>
+        </div>
+        <div class="tcard__move">
+          <span class="tchip tchip--from">Data analyst</span>
+          <span class="tarrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="tchip tchip--to">Machine Learning Eng.</span>
+        </div>
+        <p class="tcard__quote">I knew SQL and dashboards but wanted to build the models, not just report on them. The ML stage filled every gap, and the evaluation module made me genuinely rigorous about results.</p>
+        <div class="tcard__foot">
+          <div class="tcard__role"><b>Analytics firm</b><div class="stars">★★★★★</div></div>
+          <div class="tcard__salary">+72% pay</div>
+        </div>
+      </article>
+
+    </section>
+
+    <p class="wall-empty" id="wallEmpty">No stories in this group yet — try another filter.</p>
+
+    <!-- CTA -->
+    <section class="tst-cta">
+      <h3>Your story could be next</h3>
+      <p>Every graduate here started exactly where you are now. Follow the same path and build the same proof.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn-ghost" href="syllabus.html">Explore the syllabus</a>
+        <a class="btn btn-ghost" href="register.html">Register now</a>
+      </div>
+    </section>
+
+    <p class="tst-note">Testimonials shown are illustrative examples for this demo. Names, outcomes, and figures are fictional.</p>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="28" height="28" />
+      <span>IP Coaching</span>
+    </a>
+    <p class="micro" style="margin:0">© 2026 IP Coaching · Built for future AI engineers</p>
+  </footer>
+
+  <script>
+    (function(){
+      const filters = document.querySelectorAll('.filter');
+      const cards = Array.from(document.querySelectorAll('.tcard'));
+      const empty = document.getElementById('wallEmpty');
+
+      filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filters.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+          const f = btn.dataset.filter;
+          let shown = 0;
+          cards.forEach(card => {
+            const match = f === 'all' || card.dataset.group === f;
+            card.classList.toggle('is-hidden', !match);
+            if (match) shown++;
+          });
+          empty.style.display = shown === 0 ? 'block' : 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

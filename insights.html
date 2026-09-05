@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Insights — IP Coaching</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="Trends that matter: AI growth indicators and curated news." />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.min.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="36" height="36" />
+      <span>IP Coaching</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+      <a href="insights.html" aria-current="page">Insights</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section section--center">
+      <h1>AI Growth & Latest News</h1>
+      <div class="chart-wrap">
+        <canvas id="aiGrowthChart"></canvas>
+      </div>
+      <p id="chartStatus" class="micro" aria-live="polite">Loading…</p>
+    </section>
+
+    <section class="section section--center">
+      <h2>Latest AI News</h2>
+      <ul id="newsList" class="news-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> IP Coaching · All rights reserved</p>
+  </footer>
+
+  <script src="assets/insights.js?v=7" defer></script>
+  <script src="assets/app.js?v=7" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register — IP Coaching</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="description" content="Register for IP Coaching's AI/ML course. Hands-on, mentor-led, portfolio-driven learning." />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="IP Coaching logo" width="36" height="36" />
+      <span>IP Coaching</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="register.html" aria-current="page">Register</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- COUNTDOWN (now first) -->
+    <section class="section">
+      <div id="countdown" class="countdown-timer">
+        <h2>Online Webinar Countdown</h2>
+        <div class="countdown-display">
+          <div class="countdown-segment">
+            <span id="days">00</span>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-segment">
+            <span id="hours">00</span>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-segment">
+            <span id="minutes">00</span>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-segment">
+            <span id="seconds">00</span>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REGISTRATION FORM + TRUST BADGES (now below countdown) -->
+    <section class="form-wrap">
+      <h2 class="big">Learn AI to Unlock $200K+ Opportunities</h2>
+      <p class="sublead">Live Online</p>
+
+      <form id="regForm" class="form" novalidate>
+        <div class="grid-2">
+          <label>Email
+            <input name="email"
+                   type="email"
+                   required
+                   inputmode="email"
+                   autocomplete="email"
+                   spellcheck="false"
+                   aria-describedby="emailHelp" />
+             <small id="emailHelp" class="small" style="display:block;opacity:.9">
+               Use a personal email (e.g., name@example.com).
+             </small>
+          </label>
+        </div>
+
+        <!-- reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6LeDVK0rAAAAADEKGH_9SEJGlDTNdC1kA5Pc0vED" style="margin-top: 16px;"></div>
+
+        <div class="form-foot">
+          <button class="btn-neon btn-lg" type="submit">Join Webinar</button>
+          <span class="seats-pill">⚡ Limited Seats Remaining</span>
+          <div class="trust-badges" aria-label="Trust badges">
+            <span class="badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 8v5h4v-2h-2V8z"/><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12a2 2 0 0 0 2-2V5c0-1.1-.9-2-2-2"/></svg>
+              Live Q&A With Mentors
+            </span>
+            <span class="badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 8v5h4v-2h-2V8z"/><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12a2 2 0 0 0 2-2V5c0-1.1-.9-2-2-2"/></svg>
+              Real Project Training
+            </span>
+          </div>
+          <div id="formStatus" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Build AI Skills. <br class="br-md"/>Ship Real Projects.</h1>
+        <p class="lead">A focused, mentor-led AI/ML program that gets you from <em>learning</em> to <strong>deploying</strong>.</p>
+        <div class="cta-row">
+          <a class="btn-neon btn-lg" href="#regForm">Register Now</a>
+          <a class="btn-ghost" href="#curriculum">See what you’ll learn</a>
+        </div>
+        <p class="tiny-note">Next cohort starts <strong>Sept 27</strong> · Part-time · Live online</p>
+      </div>
+      <figure class="hero-art">
+        <img src="assets/ai-lab.jpg" alt="AI lab and students collaborating" loading="eager" width="1200" height="800" />
+      </figure>
+    </section>
+
+    <!-- 🔢 STATS STRIP -->
+    <section class="stats" aria-label="Program highlights">
+      <div class="stat">
+        <div class="stat-num">1,200+</div>
+        <div class="stat-label">Learners</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.9/5</div>
+        <div class="stat-label">Avg. rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">35+</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Deployed projects</div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials" aria-label="What students say">
+      <h2 class="section-title">Student Testimonials <span class="muted">· 500+ reviews</span></h2>
+      <div class="t-grid">
+        <figure class="t-card">
+          <div class="t-id">AM</div>
+          <blockquote>“Weekly labs + mentor reviews pushed me to ship. I finally felt job-ready.”</blockquote>
+          <figcaption>Alex M. · Career switcher → AI Engineer</figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-id">PR</div>
+          <blockquote>“Clear roadmap, no fluff. My capstone became my portfolio centerpiece.”</blockquote>
+          <figcaption>Priya R. · Analyst → LLM Ops</figcaption>
+        </figure>
+        <figure class="t-card">
+          <div class="t-id">KD</div>
+          <blockquote>“Code reviews were a game changer. I knew exactly what to fix each week.”</blockquote>
+          <figcaption>Kris D. · New grad → Data Scientist</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PUNCHY VALUE STRIP + CTA (right above FAQ) -->
+    <section id="curriculum" class="value-strip">
+      <div class="value-card">
+        <h3>Job Ready</h3>
+        <p>Ship real features every week with mentor feedback.</p>
+        <ul class="mini-list">
+          <li><span class="check"></span>Weekly build sprints with starter repos</li>
+          <li><span class="check"></span>Deploy to cloud (API + front-end demo)</li>
+          <li><span class="check"></span>Peer reviews & code walkthroughs</li>
+          <li><span class="check"></span>Templates for PRs, issues, and docs</li>
+        </ul>
+      </div>
+
+      <div class="value-card">
+        <h3>GENAI & LLM OPS</h3>
+        <p>Go beyond notebooks: robust, cost-aware systems.</p>
+        <ul class="mini-list">
+          <li><span class="check"></span>RAG pipelines (indexing, chunking, evals)</li>
+          <li><span class="check"></span>Finetuning vs. prompting: when & why</li>
+          <li><span class="check"></span>Observability: logging, tracing, red teaming</li>
+          <li><span class="check"></span>Latency & cost controls with caching</li>
+        </ul>
+      </div>
+
+      <div class="value-card">
+        <h3>CAREER SUPPORT</h3>
+        <p>Turn your work into outcomes and interviews.</p>
+        <ul class="mini-list">
+          <li><span class="check"></span>Capstone scoped to your target role</li>
+          <li><span class="check"></span>Resume & LinkedIn tuned to AI keywords</li>
+          <li><span class="check"></span>Portfolio review + project storytelling</li>
+          <li><span class="check"></span>Mock interviews & take-home guidance</li>
+        </ul>
+      </div>
+
+      <a class="btn-neon btn-wide" href="#regForm">Join Webinar</a>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" aria-label="Frequently asked questions">
+      <h2 class="section-title">FAQ</h2>
+      <details>
+        <summary>Who is this course for?</summary>
+        <p class="small">Beginners → working engineers. We start with Python & data workflows, then model training, GenAI/RAG, deployment, and MLOps.</p>
+      </details>
+      <details>
+        <summary>How much time should I plan each week?</summary>
+        <p class="small">~8–12 hours/week. Live sessions + guided labs. Recordings available for review.</p>
+      </details>
+      <details>
+        <summary>What if I fall behind?</summary>
+        <p class="small">Mentor office hours and weekly check-ins to keep you moving.</p>
+      </details>
+      <details>
+        <summary>Do you offer financing or reimbursement support?</summary>
+        <p class="small">Yes—monthly installments and employer reimbursement support documents.</p>
+      </details>
+      <details>
+        <summary>Is there a refund policy?</summary>
+        <p class="small">Yes—14-day money-back guarantee from your start date.</p>
+      </details>
+    </section>
+
+    <!-- Privacy -->
+    <details class="privacy">
+      <summary>Privacy</summary>
+      <p>We store only what you submit and use it to manage enrollment and communications.</p>
+    </details>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© <span id="year"></span> IP Coaching · All rights reserved</p>
+  </footer>
+
+  <!-- Floating CTA -->
+  <a href="#regForm" class="floating-preorder-btn">
+    Join Webinar
+  </a>
+
+  <!-- Styles -->
+  <style>
+    :root{
+      --ink:#ffffff; --muted:#cccccc; --line:rgba(255,255,255,.18);
+      --neon1:#7c3cff; --neon2:#b347ff; --neonPink:#ff3cff;
+    }
+
+    /* Background (match index) */
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #1b1d47 0%, transparent 50%),
+        linear-gradient(180deg, #0b0e1a 0%, #0e1330 100%);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:22px;}
+
+    /* Header */
+    .site-header{display:flex;align-items:center;justify-content:space-between;}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:800;}
+    .nav a{text-decoration:none;color:var(--muted);margin-left:16px;}
+    .nav a[aria-current="page"]{color:#fff;font-weight:800;}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center;margin-top:12px;}
+    .hero-copy h1{font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-.02em;margin:0;color:#fff;}
+    .lead{font-size:clamp(18px,2.2vw,22px);color:var(--muted);margin:.35rem 0 1rem;}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+    .btn-lg{font-size:1.05rem;padding:14px 20px;border-radius:12px;}
+    .btn-neon{display:inline-block;background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#fff;font-weight:800;text-decoration:none;border:none;box-shadow:0 0 14px rgba(124,63,255,.6);cursor:pointer;transition:transform .2s,box-shadow .2s;}
+    .btn-neon:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(124,63,255,.9);}
+    .btn-ghost{display:inline-block;border:1px solid var(--line);border-radius:12px;padding:12px 16px;text-decoration:none;color:#fff;font-weight:700;background:transparent;}
+    .btn-link{color:#e0cffd;text-decoration:underline;font-weight:700;}
+    .tiny-note{color:var(--muted);font-size:.95rem;margin:.2rem 0 0;}
+    .hero-art img{width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.25);object-fit:cover;}
+
+    /* ⭐ Rating bar */
+    .rating-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-start;margin:10px 0 6px;}
+    .rating-bar .stars span{letter-spacing:2px;font-size:1.1rem;}
+    .rating-bar .rating-copy{color:#ddd;}
+    .rating-bar .btn-link{margin-left:auto;}
+    @media(max-width:700px){.rating-bar{justify-content:flex-start;} .rating-bar .btn-link{margin-left:0;}}
+
+    /* Countdown */
+    .countdown-timer{display:flex;flex-direction:column;align-items:center;gap:16px;padding:30px;margin:28px auto;max-width:980px;background:linear-gradient(135deg,var(--neon1),var(--neon2));border:none;border-radius:14px;box-shadow:0 0 20px rgba(124,63,255,.6);color:#fff;}
+    .countdown-timer h2{font-size:clamp(22px,3vw,40px);margin:0;}
+    .countdown-display{display:flex;justify-content:center;gap:28px;font-family:'Courier New',monospace;}
+    .countdown-segment{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:16px 20px;text-align:center;min-width:100px;}
+    .countdown-segment span{display:block;font-size:2.4rem;}
+    .countdown-label{font-size:.95rem;color:#e0cfff;margin-top:4px;}
+    @media (max-width:600px){
+      .countdown-timer{padding:10px;margin:16px auto;}
+      .countdown-display{flex-wrap:nowrap;gap:8px;overflow-x:auto;}
+      .countdown-segment{min-width:70px;padding:6px 8px;}
+      .countdown-segment span{font-size:1.4rem;}
+      .countdown-label{font-size:.7rem;}
+    }
+
+    /* Logos strip */
+    .logos{margin:6px 0 8px;}
+    .logos-title{color:#bbb;margin-bottom:8px;font-weight:700;font-size:.95rem;}
+    .logos-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:center;opacity:.9;}
+    .logos-row img{width:100%;max-width:140px;justify-self:center;filter:invert(1) opacity(.8) contrast(1.1);}
+    @media(max-width:900px){.logos-row{grid-template-columns:repeat(3,1fr);} }
+    @media(max-width:560px){.logos-row{grid-template-columns:repeat(2,1fr);} }
+
+    /* Value strip */
+    .value-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start;margin:16px 0;}
+    .value-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);color:#fff;}
+    .value-card h3{margin:0 0 6px;font-size:clamp(18px,2.2vw,22px);letter-spacing:.05em;color:#fff;}
+    .value-card p{margin:0;color:#ddd;}
+    .btn-wide{grid-column:1/-1;text-align:center;padding:14px 22px;border-radius:12px;margin-top:2px;}
+    @media(max-width:900px){.value-strip{grid-template-columns:1fr;}}
+
+    /* Stats strip */
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:8px 0 18px;}
+    .stat{border:1px solid var(--line);border-radius:14px;padding:14px;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);text-align:center;}
+    .stat-num{font-size:clamp(22px,3vw,28px);font-weight:900;}
+    .stat-label{color:#cfcfe9;font-size:.95rem;}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr);} }
+
+    /* Press strip */
+    .press{margin:2px 0 14px;}
+    .press-title{color:#bbb;margin-bottom:8px;font-weight:700;font-size:.95rem;}
+    .press-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:center;opacity:.95;}
+    .press-row img{width:100%;max-width:140px;justify-self:center;filter:invert(1) opacity(.9) contrast(1.05);}
+    @media(max-width:900px){.press-row{grid-template-columns:repeat(2,1fr);} }
+
+    /* Gallery (glass cards) */
+    .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:8px 0 18px;}
+    .g-card{background:rgba(255,255,255,0.06);border:1px solid var(--line);border-radius:12px;overflow:hidden;backdrop-filter:blur(8px);color:#fff;}
+    .g-card img{display:block;width:100%;height:200px;object-fit:cover;}
+    .g-card figcaption{padding:10px;color:#ddd;}
+    @media(max-width:900px){.gallery{grid-template-columns:1fr;} .g-card img{height:220px;}}
+
+    /* Testimonials (glass) */
+    .section-title{margin:24px 0 10px;font-size:clamp(22px,3vw,34px);color:#fff;}
+    .muted{color:#bfbfe6;font-weight:600;font-size:1rem;}
+    .testimonials{margin-top:6px;}
+    .t-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+    .t-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);display:grid;gap:10px;font-size:1.05rem;color:#fff;}
+    .t-id{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:conic-gradient(from 220deg,var(--neon1),var(--neon2),var(--neon1));color:#0b0e1a;box-shadow:inset 0 0 0 2px rgba(255,255,255,.9);font-size:.95rem;}
+    .t-card blockquote{margin:0;font-style:italic;color:#f3f3f7;font-size:1.05rem;}
+    .t-card figcaption{color:#d0d0dc;font-size:1rem;font-weight:600;}
+    .center-cta{display:flex;justify-content:center;margin-top:12px;}
+    @media(max-width:900px){.t-grid{grid-template-columns:1fr;} .t-card{font-size:1rem;padding:16px;}}
+
+    /* Form (glass) */
+    .form-wrap{margin:10px 0 8px;}
+    .form-wrap .big{font-size:clamp(26px,3.8vw,42px);margin:0 0 6px;color:#fff;}
+    .form-wrap .sublead{color:#ddd;margin:0 0 14px;}
+    .form{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px;background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    @media(max-width:720px){.grid-2{grid-template-columns:1fr;}}
+    label{display:grid;gap:6px;font-weight:700;color:#fff;}
+    input,select,textarea{border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:10px 12px;font:inherit;background:rgba(0,0,0,.25);color:#fff;}
+    input::placeholder,textarea::placeholder{color:#bbb;}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--neon1);box-shadow:0 0 8px rgba(124,63,255,.7);}
+    .form-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px;}
+    .seats-pill{display:inline-block;background:var(--neonPink);color:#fff;font-size:.95rem;font-weight:800;padding:6px 12px;border-radius:999px;box-shadow:0 0 12px rgba(255,60,255,.6);}
+    .trust-badges{display:flex;gap:10px;flex-wrap:wrap;}
+    .badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:rgba(255,255,255,0.06);color:#e9e7ff;font-weight:700;font-size:.9rem;}
+
+    /* FAQ (glass) */
+    .faq{margin-top:20px;border-radius:12px;padding:16px;background:rgba(255,255,255,0.06);color:#fff;display:grid;gap:10px;border:1px solid var(--line);backdrop-filter:blur(8px);}
+    .faq details{border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px 12px;background:rgba(0,0,0,.25);}
+    summary{cursor:pointer;font-weight:800;color:#fff;}
+    .small{color:#ddd;font-size:.95rem;}
+
+    /* Privacy (glass) */
+    .privacy{margin-top:16px;border-radius:12px;padding:12px;background:rgba(255,255,255,0.06);color:#fff;border:1px solid var(--line);backdrop-filter:blur(8px);}
+    .privacy summary{font-weight:800;cursor:pointer;}
+    .privacy p{margin:8px 0 0;font-size:.95rem;color:#ddd;}
+
+    /* Floating CTA */
+    .floating-preorder-btn{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--neon1),var(--neon2));color:#fff;font-weight:900;font-size:1rem;padding:12px 22px;border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.35);text-decoration:none;z-index:1000;}
+
+    /* === NEW: compact bullets for value cards === */
+    .mini-list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:6px;
+      color:#ddd;
+      font-size:0.98rem;
+    }
+    .mini-list li{
+      display:grid;
+      grid-template-columns:18px 1fr;
+      align-items:start;
+      gap:8px;
+    }
+    .check{
+      width:14px; height:14px; margin-top:3px;
+      border-radius:3px;
+      background:linear-gradient(135deg,var(--neon1),var(--neon2));
+      position:relative;
+      box-shadow:0 0 8px rgba(124,63,255,.6);
+      flex-shrink:0;
+    }
+    .check::after{
+      content:"";
+      position:absolute; left:3px; top:2px;
+      width:7px; height:4px;
+      border-left:2px solid #fff; border-bottom:2px solid #fff;
+      transform:rotate(-45deg);
+    }
+    @media (max-width:900px){
+      .mini-list{ font-size:0.96rem; }
+    }
+
+    /* Utilities */
+    @media(max-width:980px){.hero{grid-template-columns:1fr;} .hero-art{order:-1;} }
+    .br-md{display:none;} @media(min-width:900px){.br-md{display:inline;}}
+    img.fallback{filter:saturate(.9) contrast(1.1);}
+  </style>
+
+  <!-- JS -->
+  <script>
+    // Year footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Image fallback: if any image fails, replace with an inline SVG
+    (function(){
+      const fallbackSVG = encodeURIComponent(`
+        <svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
+          <defs>
+            <linearGradient id='g' x1='0' x2='1' y1='0' y2='1'>
+              <stop offset='0%' stop-color='#7c3cff'/>
+              <stop offset='100%' stop-color='#b347ff'/>
+            </linearGradient>
+          </defs>
+          <rect width='100%' height='100%' fill='url(#g)'/>
+          <text x='50%' y='50%' fill='white' font-size='42' font-family='Arial,Helvetica,sans-serif' text-anchor='middle' dominant-baseline='middle'>
+            Image loading soon
+          </text>
+        </svg>
+      `);
+      const FALLBACK = "data:image/svg+xml;charset=UTF-8," + fallbackSVG;
+
+      document.querySelectorAll("img").forEach(img => {
+        img.addEventListener("error", () => {
+          img.src = FALLBACK;
+          img.classList.add("fallback");
+        }, { once:true });
+      });
+    })();
+  </script>
+
+  <script src="assets/register.js?v=1" defer></script>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
